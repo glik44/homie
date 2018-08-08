@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "763432723618",
+    "firebase_url": "https://homie-82599.firebaseio.com",
+    "project_id": "homie-82599",
+    "storage_bucket": "homie-82599.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763432723618:android:4f35fc6555f29d84",
+        "android_client_info": {
+          "package_name": "com.afeka.homie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763432723618-lvaebq6tl21vmpufj45bp66e9q0d7vu8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtfMngZjm5GcmDEDNDYV-HakJ88LHU9-I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

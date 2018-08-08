@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="230dp">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/details_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ap2"
+                android:scaleType="fitXY"
+                />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/details_image_user"
+                android:layout_marginTop="40dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/khalessi"
+                android:layout_gravity="right"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/details_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Los Angeles,California"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="22dp"
+
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/details_street"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="blvd street avenue 78"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="19dp"
+
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/details_price"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right|bottom"
+                android:text="$230"
+                android:textColor="@android:color/background_light"
+                android:textSize="22dp"
+
+                android:textStyle="bold" />
+
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

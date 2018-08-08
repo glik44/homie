@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<FrameLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+    <ImageView
+        android:id="@+id/ap_row_image"
+        android:src="@drawable/ap2"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:scaleType="fitXY"
+        />
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="51dp"
+            android:layout_height="26dp"
+            android:src="@drawable/hearticon"
+            android:scaleType="centerInside"
+            android:layout_gravity="right"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ap_row_imageUser"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right"
+            android:src="@drawable/nophoto"
+            />
+        <TextView
+            android:id="@+id/ap_row_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:text="ID" />
+
+
+        <TextView
+            android:id="@+id/ap_row_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:text="Country"
+
+            />
+
+
+        <TextView
+            android:id="@+id/ap_row_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:text="Price"
+            />
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

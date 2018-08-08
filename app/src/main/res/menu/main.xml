@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_add_aparment"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="new aparment"
+        app:showAsAction="ifRoom"/>
+
+    <!--<item-->
+        <!--android:id="@+id/edit_details"-->
+        <!--android:icon="@android:drawable/arrow_up_float"-->
+        <!--android:title="editaparment"-->
+        <!--app:showAsAction="ifRoom"-->
+        <!--/>-->
+
+
+    <item
+        android:id="@+id/menu_save_aparment"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="saveaparment"
+        app:showAsAction="ifRoom"
+        />
+
+
+    <item
+        android:id="@+id/menu_maps_aparment"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="mapsApartments"
+        app:showAsAction="ifRoom"
+        />
+</menu>

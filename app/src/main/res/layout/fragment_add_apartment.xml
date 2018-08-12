@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="codlic RealEstate"
+                android:text="Add apartment to Homie"
                 android:textColor="#ED872D"
                 android:textSize="16dp"
 

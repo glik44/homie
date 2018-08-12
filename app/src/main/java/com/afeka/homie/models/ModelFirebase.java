@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.afeka.homie.LoginActivity;
 import com.afeka.homie.MainActivity;
 import com.afeka.homie.R;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,36 +38,36 @@ import java.util.concurrent.Executor;
  * Created by ben on 6/10/17.
  */
 
-public class ModelFirebase {
+        public class ModelFirebase {
 
-    private FirebaseAuth mAuth;
+            private FirebaseAuth mAuth;
 
-    ModelFirebase() {
+            ModelFirebase() {
 
-        mAuth = FirebaseAuth.getInstance();
+                mAuth = FirebaseAuth.getInstance();
 
-    }
+            }
 
-    public void addApartmentToFireBase(Apartment at) {
+            public void addApartmentToFireBase(Apartment at) {
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("apartments");
-        myRef.child(at.id).setValue(at);
-        Log.d("TAG", "The Apartment has been uploaded to FireBase");
-    }
-
-
-    public void addUserToFireBase(User user) {
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("users");
-        myRef.child(user.uID).setValue(user);
-
-    }
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("apartments");
+                myRef.child(at.id).setValue(at);
+                Log.d("TAG", "The Apartment has been uploaded to FireBase");
+            }
 
 
-    interface GetAllApartmentsAndObserveCallback {
-        void onComplete(ArrayList<Apartment> list);
+            public void addUserToFireBase(User user) {
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("users");
+                myRef.child(user.uID).setValue(user);
+
+            }
+
+
+            interface GetAllApartmentsAndObserveCallback {
+                void onComplete(ArrayList<Apartment> list);
 
         void onCancel();
     }
@@ -110,8 +111,8 @@ public class ModelFirebase {
 
     //Saving Image to Firebase storage
     public void saveImageToFireBase(Bitmap imageBmp, String id, final FirebaseStorageimageURL firebasestorage) {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference imagesRef = storage.getReference().child("images").child(id);
+         FirebaseStorage storage = FirebaseStorage.getInstance();
+        final StorageReference imagesRef = storage.getReference().child("images").child(id);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         imageBmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
@@ -121,18 +122,33 @@ public class ModelFirebase {
             public void onFailure(Exception exception) {
                 firebasestorage.onFailed();
             }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        });
+
+        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
 
-                @SuppressWarnings("VisibleForTests")
-                Uri downloadUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().getResult();
-
-                firebasestorage.onSuccess(downloadUrl);
-
-                Log.d("TAG", downloadUrl.toString());
+                // Continue with the task to get the download URL
+                return imagesRef.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    Uri downloadUri = task.getResult();
+                    Log.d("TAG", downloadUri.toString());
+                    firebasestorage.onSuccess(downloadUri);
+                } else {
+                    // Handle failures
+                    // ...
+                }
             }
         });
+
+
     }
 
     interface GetImageListener {
